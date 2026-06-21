@@ -1,0 +1,6 @@
+{
+  "name": "MVP Lattes",
+  "description": "Plataforma de extração automática de dados acadêmicos com IA e coaching de carreira adaptativo para o Lattes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

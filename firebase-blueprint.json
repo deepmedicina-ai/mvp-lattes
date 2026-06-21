@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "UserFile": {
+      "title": "User File",
+      "description": "Uploaded CV or academic document for extraction by IA",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "size": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "processing", "completed", "failed"] },
+        "uploadedAt": { "type": "string", "format": "date-time" },
+        "error": { "type": "string" }
+      },
+      "required": ["name", "status"]
+    },
+    "Message": {
+      "title": "Chat Message",
+      "description": "Conversation between the student and the coach tutor",
+      "type": "object",
+      "properties": {
+        "sender": { "type": "string", "enum": ["user", "assistant"] },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["sender", "text"]
+    },
+    "ProfileSettings": {
+      "title": "Profile Settings",
+      "description": "User persona, target job, and unified extracted academic profile for Lattes",
+      "type": "object",
+      "properties": {
+        "persona": { "type": "string" },
+        "targetJob": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "PublicProfile": {
+      "title": "Public Profile",
+      "description": "Public shared academic profile of a researcher",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "researcherName": { "type": "string" },
+        "academicProfile": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "academicProfile"]
+    }
+  },
+  "firestore": {
+    "users/{userId}/files/{fileId}": {
+      "schema": "UserFile",
+      "description": "Uploaded documents metadata and extracted info"
+    },
+    "users/{userId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Tutor chat transcripts with user"
+    },
+    "users/{userId}/profile/settings": {
+      "schema": "ProfileSettings",
+      "description": "Unified profile settings"
+    },
+    "public_profiles/{profileId}": {
+      "schema": "PublicProfile",
+      "description": "Public shared profiles"
+    }
+  }
+}
