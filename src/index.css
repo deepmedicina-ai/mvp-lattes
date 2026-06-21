@@ -1,141 +1,157 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300..800;1,300..800&family=Archivo:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+/* EvoluAI Design System — CSS Custom Properties */
+:root {
+  --paper: #ECE7DB;
+  --surface: #FBF9F3;
+  --surface-2: #F0EDE4;
+  --field: #E8E3D9;
+  --line: #D4CFC5;
+  --ink: #1A1712;
+  --ink-2: #4A453E;
+  --ink-3: #8A857C;
+  --accent: #D2451E;
+  --accent-ink: #FBF9F3;
+  --positive: #3A6B46;
+  --warn: #B87A1A;
+  --coach-bg: #1E1B16;
+  --coach-surface: #2A2520;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-sans: 'Archivo', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* Custom Scrollbar Styling to prevent design-breaking default scrolls */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #4f46e5;
-}
-
-/* ==========================================================================
-   ACESSABILIDADE: TEMAS DE CORES ADAPTATIVOS (LIGHT / DARK / HIGH CONTRAST)
-   ========================================================================== */
-
-/* Light Theme overrides */
-#app-root.theme-light {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
-}
-#app-root.theme-light header {
-  background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
-}
-#app-root.theme-light header h1,
-#app-root.theme-light header p,
-#app-root.theme-light header span {
-  color: #0f172a !important;
-}
-#app-root.theme-light header .text-teal-400 {
-  color: #4f46e5 !important;
-}
-#app-root.theme-light main {
-  background-color: transparent !important;
-}
-#app-root.theme-light .bg-slate-900,
-#app-root.theme-light .bg-slate-950,
-#app-root.theme-light .bg-slate-50\/40,
-#app-root.theme-light .bg-slate-50\/50,
-#app-root.theme-light .bg-slate-50\/30 {
-  background-color: #ffffff !important;
-}
-#app-root.theme-light .border-slate-800,
-#app-root.theme-light .border-slate-900,
-#app-root.theme-light .border-slate-100 {
-  border-color: #e2e8f0 !important;
-}
-#app-root.theme-light .text-slate-100 {
-  color: #0f172a !important;
-}
-#app-root.theme-light .text-slate-300 {
-  color: #334155 !important;
-}
-#app-root.theme-light .text-slate-400 {
-  color: #64748b !important;
-}
-#app-root.theme-light .text-slate-50 {
-  color: #1e293b !important;
-}
-#app-root.theme-light input, 
-#app-root.theme-light select, 
-#app-root.theme-light textarea {
-  background-color: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  color: #0f172a !important;
-}
-#app-root.theme-light .bg-slate-900\/50 {
-  background-color: #f8fafc !important;
+/* Dark theme */
+.theme-dark {
+  --paper: #1A1712;
+  --surface: #211E18;
+  --surface-2: #2A2520;
+  --field: #302C25;
+  --line: #3D382F;
+  --ink: #EDE8DE;
+  --ink-2: #B0A898;
+  --ink-3: #6B6358;
+  --accent: #E05530;
+  --accent-ink: #FBF9F3;
+  --positive: #5A9B68;
+  --warn: #D4922A;
+  --coach-bg: #0F0D0A;
+  --coach-surface: #1A1712;
 }
 
-/* High Contrast theme overrides (Estilo de Terminal de Alto Contraste Acessível) */
-#app-root.theme-high-contrast {
-  background-color: #000000 !important;
-  color: #00ff00 !important;
-  border: 4px solid #00ff00 !important;
+/* High-contrast theme */
+.theme-contrast {
+  --paper: #000000;
+  --surface: #000000;
+  --surface-2: #111111;
+  --field: #0A0A0A;
+  --line: #00FF00;
+  --ink: #FFFFFF;
+  --ink-2: #CCCCCC;
+  --ink-3: #888888;
+  --accent: #FF4400;
+  --accent-ink: #FFFFFF;
+  --positive: #00FF00;
+  --warn: #FFAA00;
+  --coach-bg: #000000;
+  --coach-surface: #0A0A0A;
+  --font-mono: 'JetBrains Mono', monospace;
 }
-#app-root.theme-high-contrast header,
-#app-root.theme-high-contrast main,
-#app-root.theme-high-contrast div,
-#app-root.theme-high-contrast p,
-#app-root.theme-high-contrast h1,
-#app-root.theme-high-contrast h2,
-#app-root.theme-high-contrast h3,
-#app-root.theme-high-contrast h4,
-#app-root.theme-high-contrast h5,
-#app-root.theme-high-contrast h6,
-#app-root.theme-high-contrast span,
-#app-root.theme-high-contrast button,
-#app-root.theme-high-contrast input,
-#app-root.theme-high-contrast select,
-#app-root.theme-high-contrast textarea,
-#app-root.theme-high-contrast flex,
-#app-root.theme-high-contrast pre,
-#app-root.theme-high-contrast code,
-#app-root.theme-high-contrast form,
-#app-root.theme-high-contrast label,
-#app-root.theme-high-contrast svg {
-  background-color: #000000 !important;
-  color: #00ff00 !important;
-  stroke: #00ff00 !important;
-  fill: none !important;
-  border-color: #00ff00 !important;
-  font-family: "JetBrains Mono", monospace !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-#app-root.theme-high-contrast button {
-  border: 2px solid #00ff00 !important;
-  cursor: pointer !important;
+
+html, body, #root {
+  height: 100%;
 }
-#app-root.theme-high-contrast button:hover,
-#app-root.theme-high-contrast button:hover * {
-  background-color: #00ff00 !important;
-  color: #000000 !important;
-  stroke: #000000 !important;
+
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
-#app-root.theme-high-contrast input,
-#app-root.theme-high-contrast select,
-#app-root.theme-high-contrast textarea {
-  border: 2px solid #00ff00 !important;
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
+
+input, textarea, select {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  padding: 7px 10px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
 }
-#app-root.theme-high-contrast .border-indigo-100,
-#app-root.theme-high-contrast .border-slate-800,
-#app-root.theme-high-contrast .border-slate-900,
-#app-root.theme-high-contrast .border-slate-200 {
-  border-color: #00ff00 !important;
-  border-style: solid !important;
+input:focus, textarea:focus, select:focus {
+  border-color: var(--ink-3);
+}
+input::placeholder, textarea::placeholder {
+  color: var(--ink-3);
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+/* Utility classes used across components */
+.evolu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+.evolu-btn:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.evolu-btn-accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.evolu-btn-accent:hover {
+  opacity: 0.88;
+}
+
+.evolu-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.evolu-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+pre, code {
+  font-family: var(--font-mono);
 }
